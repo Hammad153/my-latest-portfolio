@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ismail Hammad portfolio</title>
+  <!-- <link rel="stylesheet" href="./css/animation-classes.css" /> -->
+  <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico" />
+  <script src="./js/animation.js" defer></script>
+  <script src="./js/color-mode.js" defer></script>
+  <script src="./js/project-slideshow.js" defer></script>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/animation.css" />
+  <link rel="stylesheet" href="./css/color-mode.css" />
+</head>
+
+<body>
+
+  <div id="cat"></div>
+  <div id="rat"></div>
+
+  <script>
+
+    // Ripple
+    window.addEventListener("click", ev => {
+      let ripple = document.createElement("div")
+      ripple.classList.add("ripple");
+      ripple.style.top = ev.clientY + "px";
+      ripple.style.left = ev.clientX + "px";
+      document.body.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove())
+    });
+
+
+    // cat
+
+      const cat = document.getElementById('cat');
+      const runningGif = './assets/cat/running-run.gif';
+      const staticImage = './assets/cat/catani1.png';
+      const moveSound = new Audio('./assets/cat/cat-aud1.mp3');
+
+      document.addEventListener('click', function (event) {
+        const clickX = event.clientX;
+        const clickY = event.clientY;
+
+        const catRect = cat.getBoundingClientRect();
+        const catX = catRect.left + catRect.width / 2;
+        const catY = catRect.top + catRect.height / 2;
+
+        const directionX = clickX - catX;
+        const directionY = clickY - catY;
+
+        const angle = Math.atan2(directionY, directionX);
+        const angleDegrees = angle * (180 / Math.PI);
+
+        moveSound.play();
+
+        cat.style.transform = `translate(-50%, -50%) rotate(${angleDegrees}deg) scaleX(-1)`;
+        cat.style.backgroundImage = `url(${runningGif})`;
+        moveCat(clickX, clickY, angleDegrees);
+      });
+
+      function moveCat(x, y, angleDegrees) {
+        cat.style.left = (x - 50) + 'px';
+        cat.style.top = (y - 50) + 'px';
+
+        setTimeout(() => {
+          cat.style.backgroundImage = `url(${staticImage})`;
+          cat.style.transform = `translate(-50%, -50%) rotate(${angleDegrees}deg) scaleX(-1)`; 
+        }, 1000);
+      }
+
+
+
+  </script>
+
+
+
+  <div id="hero">
+    <h5>Hello I'm</h5>
+    <h1>Ismail Hammad</h1>
+    <p>CodeSoar || Fullstack Developer</p>
+
+
+
+
+
+    <!-- Block, Element, Modifier (BEM) naming convention-->
+    <div id="hero__animation">
+      <div id="hero__animation__img"></div>
+    </div>
+  </div>
+  <nav id="grid">
+    <div id="grid__tl">
+      <div id="grid__tl__btn">About</div>
+      <div id="grid__tl__content">
+        <div class="cards">
+
+          <div class="cards__content">
+            <article>
+              <img src="./assets/Resume_Combined.jpeg" alt="Education icon" class="icon" />
+              <h2>Resume</h2>
+              <a href="" download style="text-decoration: none;">
+                <p class="dwn">Download</p>
+              </a>
+            </article>
+          </div>
+
+          <div class="cards__content">
+            <article>
+              <img src="./assets/icons/experience.png" alt="Experience icon" class="icon" />
+              <h2>Experience</h2>
+              <p>
+                2 years + <br />
+                Developer <br />
+                Experience
+              </p>
+            </article>
+          
+          </div>
+          <div class="cards__content">
+            <article>
+              <img src="./assets/icons/education.png" alt="Education icon" class="icon" />
+              <h2>Education</h2>
+              <p>B. Sc. Electrical Technology</p>
+            </article>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div id="grid__tr">
+      <div id="grid__tr__btn">Experience</div>
+      <div id="grid__tr__content">
+        <div class="cards experience">
+          <article class="experience__skill">
+
+            <h2>Frontend Development</h2>
+
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>JavaScript</h2>
+                <p>Advanced</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>React JS</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>HTML-CSS</h2>
+                <p>Experienced</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>Tailwindcss</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+
+
+          </article>
+
+          <article class="experience__skill">
+
+            <h2>Backend Development</h2>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>PostgreSQL</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>MySQL</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>NodeJS</h2>
+                <p>Experienced</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>Express JS</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+            <div>
+              <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
+              <div>
+                <h2>GitHub</h2>
+                <p>Intermediate</p>
+              </div>
+            </div>
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div id="grid__bl">
+      <div id="grid__bl__btn">Projects</div>
+      <div id="grid__bl__content">
+        <div id="grid__bl__content__projects">
+
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/boredom buster.png" alt="Project 3" />
+            <h2 class="project__title">Boredom Buster</h2>
+
+            <button class="btn"
+              onclick="window.location.href='https://boredombuster-89xm.onrender.com'">
+              Demo
+            </button>
+            <button class="btn"
+              onclick="window.location.href='https://github.com/Hammad153/BoredomBusterApp.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-1">
+            <img class="project__img project-1" src="assets/portfolio-projects/tacotown.png" alt="Project 1" />
+            <h2 class="project__title">Taco Shop</h2>
+            <button class="btn" onclick="window.location.href='https://taco-preparation-shop.onrender.com'">
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/taco-shop.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/loveexpress.png" alt="Project 3" />
+            <h2 class="project__title">Love expression app</h2>
+
+            <button class="btn" onclick="window.location.href='https://express-love-expression-app.onrender.com'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/express-love-expression-app.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/ejsportfolio.png" alt="Project 3" />
+            <h2 class="project__title">My EJS Portfolio</h2>
+
+            <button class="btn" onclick="window.location.href='https://my-ejs-portfolio-krwb.onrender.com'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/My-Ejs-portfolio.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/bandnamegenerator.png" alt="Project 3" />
+            <h2 class="project__title">Band name generator</h2>
+
+            <button class="btn" onclick="window.location.href='https://bandnamegenerator-x5da.onrender.com'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/express.js_Pro-1.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/bandgenerator.png" alt="Project 3" />
+            <h2 class="project__title">Band Generator App</h2>
+
+            <button class="btn" onclick="window.location.href='https://band-generator-xl93.onrender.com'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/band-generator.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/secrets.png" alt="Project 3" />
+            <h2 class="project__title">Golden secrets</h2>
+
+            <button class="btn" onclick="window.location.href='https://express-secret-project.onrender.com'">
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/express-secret-project.git'">
+              GitHub
+            </button>
+          </div>
+
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/countsapp.png" alt="Project 3" />
+            <h2 class="project__title">Counter app</h2>
+
+            <button class="btn" onclick="window.location.href='https://countapps.netlify.app/'">
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/react-counter-.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/bandgenerator.png" alt="Project 3" />
+            <h2 class="project__title">React Shopping Cart</h2>
+
+            <button class="btn" onclick="window.location.href='https://Hammad153.github.io/react-shopping-cart'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/react-shopping-cart.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/bandgenerator.png" alt="Project 3" />
+            <h2 class="project__title">My React Portfolio</h2>
+
+            <button class="btn" onclick="window.location.href='https://hammad153.github.io/my-portfolio/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/my-portfolio.git'">
+              GitHub
+            </button>
+          </div>
+
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/palindromechecker.png" alt="Project 3" />
+            <h2 class="project__title">Palindrome checker App</h2>
+
+            <button class="btn" onclick="window.location.href='http://palindrome-check-app.netlify.app'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/roman converter.png" alt="Project 3" />
+            <h2 class="project__title">Roman converter</h2>
+
+            <button class="btn" onclick="window.location.href='https://romanconvert.netlify.app/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/usnumbervalidatyor.png" alt="Project 3" />
+            <h2 class="project__title">Mobile validator App</h2>
+
+            <button class="btn" onclick="window.location.href='https://cellcheck.netlify.app/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+          
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/cash register.png" alt="Project 3" />
+            <h2 class="project__title">Cash Register App</h2>
+
+            <button class="btn" onclick="window.location.href='https://cashtrackerapp.netlify.app'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+          
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/pokemon.png" alt="Project 3" />
+            <h2 class="project__title">Pokemon search App</h2>
+
+            <button class="btn" onclick="window.location.href='https://pokemonfindr.netlify.app/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-2">
+            <img class="project__img project-2" src="assets/portfolio-projects/notetaking.png" alt="Project 2" />
+            <h2 class="project__title"></h2>
+            <h2 class="project__title">Note taking app</h2>
+            <button class="btn" onclick="window.location.href='https://take-note-online.netlify.app'"> <!--i changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-2">
+            <img class="project__img project-2" src="assets/portfolio-projects/Todo App.jpeg" alt="Project 2" />
+            <h2 class="project__title"></h2>
+            <h2 class="project__title">Todo app</h2>
+            <button class="btn" onclick="window.location.href='https://my-todo-app-gold-phi.vercel.app/'"> <!--i changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/TodoList-App'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/techimagegallery.png" alt="Project 3" />
+            <h2 class="project__title">Image Gallery</h2>
+
+            <button class="btn" onclick="window.location.href='https://resonant-syrniki-a76132.netlify.app'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Javascript-projects.git'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/Drum kit.jpeg" alt="Project 3" />
+            <h2 class="project__title">Drum kit app</h2>
+
+            <button class="btn" onclick="window.location.href='https://drum-kit-app-nu.vercel.app/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Drum-kit-app'">
+              GitHub
+            </button>
+          </div>
+
+
+          <div class="project p-3">
+            <img class="project__img project-3" src="assets/portfolio-projects/Dice game.jpeg" alt="Project 3" />
+            <h2 class="project__title">Dice Game</h2>
+
+            <button class="btn" onclick="window.location.href='https://dice-game-i6kj.vercel.app/'"> <!--2 changes added -->
+              Demo
+            </button>
+            <button class="btn" onclick="window.location.href='https://github.com/Hammad153/Dice-Game-'">
+              GitHub
+            </button>
+          </div>
+
+
+          <button class="arrow" onclick="navigateProject(-1)">
+            &#10094;
+          </button>
+          <button class="arrow" onclick="navigateProject(1)">&#10095;</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="grid__br">
+      <div id="grid__br__btn">Contact</div>
+      <div id="grid__br__content">
+        <h5 class="contact-text">Get In Touch</h5>
+        <h2 class="contact-text">Contact Me</h2>
+        <div>
+          <button style="border: 4px solid red;" class="btn btn-contact"
+            onclick="window.location.href='mailto:hammadismail1546gmail.com'">
+            Email
+          </button>
+          <button style="border: 4px solid rgb(65, 125, 237);" class="btn btn-contact"
+            onclick="window.location.href='https://www.linkedin.com/in/ismail-hammad-bb73152b9'">
+            LinkedIn
+          </button>
+          <button style="border: 4px solid rgb(18, 192, 119);" class="btn btn-contact"
+            onclick="window.location.href='https://wa.me/2349155645984'">
+            WhatsApp
+          </button>
+          <button style="border: 4px solid rgb(180, 192, 18);" class="btn btn-contact"
+            onclick="window.location.href='https://github.com/Hammad153'">
+            Github
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="color-mode" style="background-color: rgb(93, 93, 93);">
+    <div id="toggle-button" class="icon" style="background-color: white; border-radius: 50px;">
+
+    </div>
+  </div>
+</body>
+
+</html>
